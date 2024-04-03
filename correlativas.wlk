@@ -27,6 +27,12 @@ class Inscripcion {
 	const property alumno
 	const property materiasIncripcion = #{}
 	
+	method agregarMateriaIncripcion(unasMaterias) = materiasIncripcion.addAll(unasMaterias)
+	
+	method eliminarMateriaIncripcion(unaMateria) {
+		if ( materiasIncripcion.contains(unaMateria) )
+			{ materiasIncripcion.remove(unaMateria) } else { } }
+	
 	method aprobada() = materiasIncripcion.all({materia => alumno.cumpleCorrelativas(materia)})
 	
 }

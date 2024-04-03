@@ -1,0 +1,68 @@
+import correlativas.*
+
+
+// MATERIAS DE SISTEMAS
+
+const algortimos = new Materia(
+		nombreMateria = "Algoritmos y Estructura de Datos",
+		codigoMateria = 23,
+		correlativasPrevias = [])
+		
+const organizaciones = new Materia(
+		nombreMateria = "Sistemas y Organizaciones",
+		codigoMateria = 23,
+		correlativasPrevias = [])
+		
+const inglesTecnico1 = new Materia(
+		nombreMateria = "Ingles Tecnico 1",
+		codigoMateria = 23,
+		correlativasPrevias = [])
+		
+const discreta = new Materia(
+		nombreMateria = "Matematica Discreta",
+		codigoMateria = 23,
+		correlativasPrevias = [])
+		
+const paradigmasProgramacion = new Materia(
+		nombreMateria = "Paradigmas Programacion",
+		codigoMateria = 23,
+		correlativasPrevias = [algortimos,discreta])
+		
+const analisisDeSistemas = new Materia(
+		nombreMateria = "Analisis Sistemas",
+		codigoMateria = 23,
+		correlativasPrevias = [algortimos,organizaciones])
+		
+const disenioDeSistemaas = new Materia(
+		nombreMateria = "Disenio Sistemas",
+		codigoMateria = 23,
+		correlativasPrevias = [algortimos,organizaciones,inglesTecnico1])
+
+
+// ALUMNOS CASOS DE PRUEBA}
+
+const ariel = new Alumno(
+	nombreCompleto = "Ariel Mendoza",
+	legajo = 1702415,
+	materiasAprobadas = [organizaciones,algortimos,inglesTecnico1] )
+
+const nicolas = new Alumno(
+	nombreCompleto = "Nicolas Lozano",
+	legajo = 2149804,
+	materiasAprobadas = [organizaciones,algortimos])
+
+
+
+describe "Test de Incripcion" {
+	
+	test "cumple correlativas para inscripcion" {
+		const incripcion1 = new Inscripcion(alumno = ariel, materiasIncripcion = [disenioDeSistemaas])
+		assert.that(incripcion1.aprobada())
+	}
+	
+	test "no cumple correlativas para inscripcon"{
+	const incripcion2 = new Inscripcion(alumno = nicolas, materiasIncripcion = [disenioDeSistemaas])
+		assert.notThat(incripcion2.aprobada())
+	}
+	
+}
